@@ -1,0 +1,56 @@
+<app-mainview ng-model="mainview"> </app-mainview>
+<div class="wrapper ">
+    <div class="main-panel">
+        <div class="content">
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand">Applicants List</a>
+                    </div>
+                    <app-logout></app-logout>
+                </div>
+            </nav>
+            <mat-toolbar class="toolbar" color="primary">
+                <span>Codex Technologies</span>
+                <div class="toolbarButtons">
+                    <button class="b1" mat-button (click)="viewApplicants()">View Applicants</button>
+                    <button class="b1" mat-button (click)="viewEvaluated()">Evaluated Applicants</button>
+                    <!-- <button mat-raised-button>text</button> -->
+                </div>
+
+            </mat-toolbar>
+
+            <div class="jumbotron">
+                <mat-toolbar style="background-color: rgba(163, 126, 197, 0.699);" class="mat-elevation-z6">
+                    <span>Evaluated Applicants</span>
+                </mat-toolbar>
+                <table class="table table-striped" style="margin-top: 16px;max-height: 800px;overflow: scroll;">
+                    <thead>
+                        <tr>
+                            <th>#No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>LinkedIn Profile</th>
+                            <th>NIC Number</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="applicants">
+                        <tr class="sel" style="cursor: pointer;" *ngFor="let applicant of applicants; let i = index"
+                            (click)="viewDetails(applicant)">
+                            <td>{{i+1}}</td>
+                            <td>{{applicant.firstname}} {{applicant.lastname}} </td>
+
+                            <td>{{applicant.email}}</td>
+                            <td>{{applicant.mobile}}</td>
+                            <td>{{applicant.linkedin}}</td>
+                            <td>{{applicant.nic}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
